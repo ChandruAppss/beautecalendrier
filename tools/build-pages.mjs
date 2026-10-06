@@ -51,8 +51,8 @@ const tpl = (file, title, desc, body) => `<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="assets/consent.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261006">
+  <script src="assets/consent.js?v=20261006" defer></script>
 </head>
 <body class="page-legal">
   <header class="site-header">

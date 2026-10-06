@@ -31,6 +31,25 @@ const SITE_CONFIG = {
     el.textContent = new Date().getFullYear();
   });
 
+  /* ---------- Meta Pixel: track product button clicks ----------
+     Sent only when the pixel is loaded, i.e. after cookie consent (assets/consent.js). */
+  const ctaLocation = (el) => {
+    if (el.closest(".site-header")) return "header";
+    if (el.closest(".cta-banner")) return "final_cta";
+    const section = el.closest("section[id]");
+    return { accueil: "hero", produit: "product", faq: "faq" }[section && section.id] || "other";
+  };
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("[data-cta]");
+    if (!link || typeof window.fbq !== "function") return;
+    window.fbq("trackCustom", "ProductButtonClick", {
+      button_text: link.textContent.trim().replace(/\s+/g, " "),
+      button_location: ctaLocation(link),
+      destination_url: link.href,
+      merchant: SITE_CONFIG.merchantName,
+    });
+  });
+
   /* ---------- header: shadow on scroll + mobile menu ---------- */
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
