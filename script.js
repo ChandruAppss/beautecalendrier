@@ -4,8 +4,8 @@
    ========================================================= */
 const SITE_CONFIG = {
   // Destination of every "Découvrir le produit" CTA (replace with your affiliate link)
-  merchantUrl: "https://girly-room.com/products/l-oreal-paris-calendrier-avent-2026",
-  merchantName: "Girly Room",
+  merchantUrl: "https://sundye.fr/products/miroir-coiffeuse-led-cristaux",
+  merchantName: "Sundye",
   social: {
     facebook: "https://www.facebook.com/",
     instagram: "https://www.instagram.com/",
