@@ -1,13 +1,15 @@
 /* =========================================================
-   BeautéCalendrier — cookie consent + Meta Pixel
-   The pixel is only loaded after the visitor clicks "Accepter".
+   BeautéCalendrier — cookie consent + Meta Pixel + Google Analytics 4
+   Both trackers are only loaded after the visitor clicks "Accepter".
    The choice is stored for 6 months (CNIL recommendation).
    ========================================================= */
 (function () {
   "use strict";
 
   var META_PIXEL_ID = "1736135640944955";
-  var STORAGE_KEY = "bc_consent";
+  var GA_MEASUREMENT_ID = ""; // GA4 ID, e.g. "G-XXXXXXXXXX" (empty = Google Analytics disabled)
+  // Bump the key whenever the list of trackers changes, so everyone is asked again.
+  var STORAGE_KEY = GA_MEASUREMENT_ID ? "bc_consent_v2" : "bc_consent";
   var MAX_AGE = 1000 * 60 * 60 * 24 * 182; // ~6 months
   var PRIVACY_URL = "confidentialite.html";
 
@@ -42,6 +44,28 @@
     if (window.fbq) window.fbq("consent", "revoke");
   }
 
+  /* ---------- Google Analytics 4 (gtag.js, loaded on consent only) ---------- */
+  function loadGoogleAnalytics() {
+    if (!GA_MEASUREMENT_ID) return;
+    window["ga-disable-" + GA_MEASUREMENT_ID] = false;
+    if (window.gtag) return;
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_MEASUREMENT_ID);
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", GA_MEASUREMENT_ID);
+  }
+
+  function revokeGoogleAnalytics() {
+    if (GA_MEASUREMENT_ID) window["ga-disable-" + GA_MEASUREMENT_ID] = true;
+  }
+
+  function grantAll() { loadMetaPixel(); loadGoogleAnalytics(); }
+  function revokeAll() { revokeMetaPixel(); revokeGoogleAnalytics(); }
+
   /* ---------- banner ---------- */
   var banner;
 
@@ -56,7 +80,9 @@
       '<div class="cookie-inner">' +
         '<div class="cookie-copy">' +
           '<p class="cookie-title" id="cookie-title">Votre vie privée</p>' +
-          '<p class="cookie-text" id="cookie-text">Avec votre accord, nous utilisons le pixel Meta (Facebook) pour mesurer l’audience du site et l’efficacité de nos publicités. ' +
+          '<p class="cookie-text" id="cookie-text">Avec votre accord, nous utilisons ' +
+          (GA_MEASUREMENT_ID ? 'Google Analytics et le pixel Meta (Facebook)' : 'le pixel Meta (Facebook)') +
+          ' pour mesurer l’audience du site et l’efficacité de nos publicités. ' +
           'Vous pouvez accepter ou refuser, et modifier votre choix à tout moment via « Gérer les cookies » en bas de page. ' +
           '<a href="' + PRIVACY_URL + '">En savoir plus</a></p>' +
         '</div>' +
@@ -70,7 +96,7 @@
       if (!btn) return;
       var value = btn.getAttribute("data-consent");
       saveChoice(value);
-      if (value === "granted") loadMetaPixel(); else revokeMetaPixel();
+      if (value === "granted") grantAll(); else revokeAll();
       hideBanner();
     });
     document.body.appendChild(banner);
@@ -88,7 +114,7 @@
 
   function init() {
     var choice = readChoice();
-    if (choice === "granted") loadMetaPixel();
+    if (choice === "granted") grantAll();
     else if (choice === null) showBanner();
 
     document.addEventListener("click", function (e) {

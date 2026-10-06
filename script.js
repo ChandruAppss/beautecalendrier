@@ -31,8 +31,8 @@ const SITE_CONFIG = {
     el.textContent = new Date().getFullYear();
   });
 
-  /* ---------- Meta Pixel: track product button clicks ----------
-     Sent only when the pixel is loaded, i.e. after cookie consent (assets/consent.js). */
+  /* ---------- Meta Pixel + GA4: track product button clicks ----------
+     Sent only when the trackers are loaded, i.e. after cookie consent (assets/consent.js). */
   const ctaLocation = (el) => {
     if (el.closest(".site-header")) return "header";
     if (el.closest(".cta-banner")) return "final_cta";
@@ -41,13 +41,15 @@ const SITE_CONFIG = {
   };
   document.addEventListener("click", (e) => {
     const link = e.target.closest("[data-cta]");
-    if (!link || typeof window.fbq !== "function") return;
-    window.fbq("trackCustom", "ProductButtonClick", {
+    if (!link) return;
+    const params = {
       button_text: link.textContent.trim().replace(/\s+/g, " "),
       button_location: ctaLocation(link),
       destination_url: link.href,
       merchant: SITE_CONFIG.merchantName,
-    });
+    };
+    if (typeof window.fbq === "function") window.fbq("trackCustom", "ProductButtonClick", params);
+    if (typeof window.gtag === "function") window.gtag("event", "product_button_click", params);
   });
 
   /* ---------- header: shadow on scroll + mobile menu ---------- */
