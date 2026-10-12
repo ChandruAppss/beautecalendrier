@@ -23,16 +23,15 @@ const pages = {
     <p>Pour toute question relative à vos données, écrivez-nous à <a href="mailto:contact@beautecalendrier.info">contact@beautecalendrier.info</a>.</p>`],
   "conditions.html": ["Conditions générales", "Conditions d’utilisation du site BeautéCalendrier.", `
     <h2>Objet du site</h2>
-    <p>BeautéCalendrier est un site éditorial indépendant qui présente des calendriers de l’Avent beauté. Il ne vend aucun produit : les achats sont réalisés sur le site des marchands partenaires, selon leurs propres conditions générales de vente.</p>
+    <p>BeautéCalendrier est un site éditorial indépendant qui présente une sélection de produits beauté. Il ne vend aucun produit : les achats sont réalisés sur le site des marchands partenaires, selon leurs propres conditions générales de vente.</p>
     <h2>Indépendance</h2>
-    <p>BeautéCalendrier n’est pas affilié, sponsorisé ou officiellement associé à L’Oréal Paris. Les marques citées appartiennent à leurs propriétaires respectifs et sont utilisées uniquement pour désigner les produits présentés.</p>
+    <p>BeautéCalendrier est un site indépendant. Il n’est exploité par aucune des marques ou boutiques présentées. Les marques citées appartiennent à leurs propriétaires respectifs et sont utilisées uniquement pour désigner les produits présentés.</p>
     <h2>Informations et visuels</h2>
-    <p>Les informations sont fournies à titre indicatif et peuvent évoluer (contenu, prix, disponibilité). Les visuels du site sont des illustrations ; seule la fiche produit du marchand fait foi.</p>
+    <p>Les informations sont fournies à titre indicatif et peuvent évoluer (contenu, prix, disponibilité). Les photos des produits proviennent des marchands ; seule la fiche produit du marchand fait foi.</p>
     <h2>Rémunération</h2>
     <p>Certains liens sont des liens d’affiliation : BeautéCalendrier peut percevoir une commission sur les achats effectués, sans surcoût pour vous.</p>`],
   "livraison.html": ["Livraison", "Informations sur la livraison des commandes.", `
     <p>Les commandes passées via nos liens sont expédiées par le marchand partenaire. Les modes de livraison, les tarifs et les délais sont indiqués sur son site au moment de la commande.</p>
-    <p>Pour recevoir votre calendrier de l’Avent avant le 1<sup>er</sup> décembre, nous vous conseillons de commander le plus tôt possible : les stocks des éditions limitées s’épuisent souvent rapidement.</p>
     <p>Pour le suivi d’un colis, contactez directement le service client du marchand.</p>`],
   "retours.html": ["Retours", "Informations sur les retours et remboursements.", `
     <p>Les retours et remboursements sont gérés par le marchand auprès duquel vous avez passé commande, selon ses conditions générales de vente.</p>
@@ -51,15 +50,15 @@ const tpl = (file, title, desc, body) => `<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261006">
-  <script src="assets/consent.js?v=20261006" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261012">
+  <script src="assets/consent.js?v=20261012" defer></script>
 </head>
 <body class="page-legal">
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html" aria-label="BeautéCalendrier, retour à l’accueil">
         <img class="logo-icon" src="assets/favicon.svg" alt="" width="44" height="44" style="border-radius:10px">
-        <span class="logo-text"><span class="logo-name">BeautéCalendrier</span><span class="logo-tag">Des surprises beauté chaque jour</span></span>
+        <span class="logo-text"><span class="logo-name">BeautéCalendrier</span><span class="logo-tag">Vos coups de cœur beauté</span></span>
       </a>
       <a class="btn btn-primary btn-sm legal-back" href="index.html">← Retour à l’accueil</a>
     </div>
@@ -70,7 +69,7 @@ const tpl = (file, title, desc, body) => `<!doctype html>
   </main>
   <footer class="site-footer">
     <div class="container footer-legal">
-      <p>BeautéCalendrier est un site indépendant dédié aux calendriers de l’Avent beauté. Ce site n’est pas affilié, sponsorisé ou officiellement associé à L’Oréal Paris.</p>
+      <p>BeautéCalendrier est un site indépendant de recommandations beauté. Il n’est pas exploité par les marques ou boutiques présentées.</p>
       <p><a href="contact.html">Contact</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="conditions.html">Conditions générales</a> · <a href="livraison.html">Livraison</a> · <a href="retours.html">Retours</a> · <a href="confidentialite.html#cookies" data-cookie-settings>Gérer les cookies</a></p>
     </div>
   </footer>

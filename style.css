@@ -153,7 +153,7 @@ h2 { font-family: var(--serif); font-weight: 500; font-size: 42px; line-height: 
 .hero-actions .btn-lg { padding: 0 54px; }
 
 .hero-media { position: relative; align-self: center; padding: 24px 0; }
-.hero-media img { width: 100%; max-width: 620px; margin: 0 0 0 auto; }
+.hero-media img { width: 100%; max-width: 560px; margin: 0 0 0 auto; border-radius: 22px; box-shadow: 0 24px 60px rgba(160, 50, 90, .18); }
 
 /* load animation */
 .js .hero-content > * { opacity: 0; transform: translateY(16px); animation: rise .8s var(--ease) forwards; }
@@ -298,11 +298,12 @@ h2 { font-family: var(--serif); font-weight: 500; font-size: 42px; line-height: 
    ========================================================= */
 .cta-banner {
   position: relative;
-  background: #f8e1d6 url("images/christmas-gifts.webp") center / cover no-repeat;
+  background: #f4bcd0 url("images/cta-miroir.webp") center / cover no-repeat;
   padding: 50px 0 56px;
   text-align: center;
   overflow: hidden;
 }
+.cta-banner::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(255, 246, 249, .82) 0%, rgba(255, 240, 245, .55) 55%, rgba(255, 240, 245, .15) 100%); }
 .cta-inner { position: relative; max-width: 860px; }
 .cta-banner h2 { font-size: 40px; margin-bottom: 14px; }
 .cta-banner p { font-size: 16.5px; line-height: 1.7; color: var(--ink-2); margin-bottom: 28px; }
