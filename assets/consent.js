@@ -6,7 +6,8 @@
 (function () {
   "use strict";
 
-  var META_PIXEL_ID = "1736135640944955";
+  // Meta Pixel IDs: every event (PageView, ProductButtonClick) is sent to all of them.
+  var META_PIXEL_IDS = ["1736135640944955", "1249675337357067"];
   var GA_MEASUREMENT_ID = ""; // GA4 ID, e.g. "G-XXXXXXXXXX" (empty = Google Analytics disabled)
   // Bump the key whenever the list of trackers changes, so everyone is asked again.
   var STORAGE_KEY = GA_MEASUREMENT_ID ? "bc_consent_v2" : "bc_consent";
@@ -36,7 +37,7 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    window.fbq("init", META_PIXEL_ID);
+    META_PIXEL_IDS.forEach(function (id) { window.fbq("init", id); });
     window.fbq("track", "PageView");
   }
 
