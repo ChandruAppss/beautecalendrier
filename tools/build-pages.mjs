@@ -50,8 +50,8 @@ const tpl = (file, title, desc, body) => `<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261014">
-  <script src="assets/consent.js?v=20261014" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261014b">
+  <script src="assets/consent.js?v=20261014b" defer></script>
 </head>
 <body class="page-legal">
   <header class="site-header">

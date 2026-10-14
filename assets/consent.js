@@ -7,7 +7,7 @@
   "use strict";
 
   // Meta Pixel IDs: every event (PageView, ProductButtonClick) is sent to all of them.
-  var META_PIXEL_IDS = ["1736135640944955", "1249675337357067"];
+  var META_PIXEL_IDS = ["1249675337357067"];
   var GA_MEASUREMENT_ID = ""; // GA4 ID, e.g. "G-XXXXXXXXXX" (empty = Google Analytics disabled)
   // Bump the key whenever the list of trackers changes, so everyone is asked again.
   var STORAGE_KEY = GA_MEASUREMENT_ID ? "bc_consent_v2" : "bc_consent";
